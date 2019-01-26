@@ -1,0 +1,25 @@
+Espec DicBin
+	Importar todo de arib
+	excepto consa
+	insord:Elem, DicBin->DicBin
+Axioma:Elem r,DicBin i,d;
+	b1:esVacio(insord(e,d))=False;
+	b2:raiz(insord(e,a))=e;
+	b3:izq(insord(e,a))=Si (esVacio(a))
+							return vacio();
+						sino si esMenor(e,raiz(a))
+							return insord(e,izq(a));
+						Sino 
+							return izq(a);
+	b4:der(insord(e,a))=Si (esVacio(a))
+							return vacio();
+						sino si esMenor(e,raiz(a))
+							return insord(e,der(a));
+						Sino 
+							return der(a);;
+	FinDicBin
+
+//TAREA
+//ENTRAR DE UN ARCHIVO
+OPENING DE Trainspotting METER PALABRAS EN EL ARBOL 
+volcarlo

@@ -1,0 +1,32 @@
+Espec Arbin
+	vacio:->Arbin
+	consA:Elem,Arbin,Arbin->Arbin;
+	esVacio:Arbin->Bool;
+	raiz:Arbin->Elem;
+	izq:Arbin->Arbin;
+	der:Arbin->Arbin;
+
+Axioma:Elem r,Arbin i,d;
+	b1:esVacioAB(vacio())=true;
+	b2:esVacio(consA(r,i,d))=False;
+	b3:raiz(vacio())=Error;
+	b4:raiz(consA(r,i,d))=r
+	b5:izq(vacio()))=Error;
+	b6:izq(consA(r,i,d))=i;
+
+	b7:der(vacio()))=Error;
+	b8:der(consA(r,i,d))=d;
+	FinArbin
+
+
+	Ejercicio Definir una funcion que reciba como arugmentop un arbol binario y devuelva el numero de elementos que contiene.
+	numElem
+
+	NumElem(a)= 0, si esVacioAB(a)= cierto
+				1+NumElem(izq(a))+NumElem(der(a))
+				esVacioAB(a)!=0
+	NumElemAB(a)=	Si(esVacioAB(a))
+					ret 0;
+				Sino
+					ret 1+1+NumElemAB(izq(a))+NumElemAB(der(a));
+					

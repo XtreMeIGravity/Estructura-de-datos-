@@ -1,0 +1,43 @@
+espec BOLSA
+vaciab:->BOLSA;
+insertab:Elem,BOLSA->BOLSA;
+esvaciab:BOLSA->BOOL;
+estaenb:Elem,BOLSA->BOOL;
+eliminab:Elem,BOLSA->BOLSA;
+unionb;BOLSA,BOLSA->BOLSA;
+intersenccionb:BOLSA,BOLSA->BOLSA;
+diferenciab:BOLSA,BOLSA->BOLSA;
+cardinalidadb:BOLSA->Entero;
+
+AXIOMAS: Conjunto S1,S2,Elem e1,e2;PARA BOLSAS SE PUEDEN REPETIR VALORES
+INSERTA E1,S1=SI(ESTAEN(E1,S1))
+            RETURN S1
+        SINO 
+            RETURN INSERTA(E11,S1)
+B1:esvaciab(vaciab())=CIERTO;
+B2:esvaciab(insertab(e1,S1))=FALSO;
+B3:estaenb(e1,vaciab())=FALSO;
+B4:estaenb(e2,insertab(e1,S1))=S1 e1==e2
+                                ret CIERTO;
+                            sino
+                                ret estaen(e1,S1);
+B5:eliminab(e1,vaciab())=vaciab();
+B6:eliminab(e2,insertab(e1,S1))=si e2==e1 ret S1;
+                            else return insertab(e1,eliminab(e2,S1));
+B7:unionb(S1,vaciab())=S1;
+B8:unionb(S1,insertab(e2,S2)=insertab(e2,unionb(S1,S2)));
+
+B9:intersenccionb(S1,vaciab())=vaciab();
+B10:intersenccionb(S1,inserta(e2,S2))=
+                si estaen(e2,S1)
+                    return inserta(e2,intersenccionb(eliminab(e2,S1),S2));
+B11:diferenciab(S1,vaciab())=S1
+B12:diferenciab(S1,insertab(e2,S2))=
+            si estan en (e2,S1)
+                return eliminab(e2,diferenciab(b,c));
+            sino
+                return diferenciab(S1,S2);
+B13:cardinalidadb(vaciab())=0
+B14:cardinalidadb(inserta(e1,S1))=1+cardinalidad(S1);
+Fin BOLSA.
+para mañanas

@@ -1,0 +1,36 @@
+EsCompleto(vacio())=Cierto;
+EsCompleto(consAB(r,i,d))
+    Si(altura(i)-altura(d)<=1  && EsCompleto(i) && EsCompleto(d))
+        return Cierto;
+    Sino
+        return Falso;
+
+EsLLeno(vacio())=Cierto;
+EsLLeno(consAB(r,i,d))
+    Si(altura(i)==altura(d) && EsLLeno(i)&&EsLLeno(d))
+        return Cierto;
+    Sino
+        return Falso;
+
+
+
+
+        
+Heap hazCompleto(Elem e, vacio())=consAB(e,vacio(),vacio());
+Heap hazCompleto(Elem e, consAB(r,i,d))=
+    Si( (altura(i)== altura(d)+1 &&  EsLLeno(i)) || (altura(i)==altura(d) &&
+    !EsLLeno(d)))
+        return cons(r,i,hazCompleto(e,d));
+    Sino
+        return cons(r,hazCompleto(e,i),d);
+Heap ConsHeap(Arbin a){
+    if(esVacioAB(a))
+        return a;
+    else if((altura(izqAB(a))-altura(derAB(a)))<=1)
+        return hazHeap(raiz(a),ConsHeap(izqAB(a)),ConsHeap(derAB(a)));
+    else
+        
+}
+
+
+VOLCAR UN ARCHIVO DE TEXTO EN UNA LISTA  ACOMODARLO EM ARBOL HEAP E IMPRIMIRLO EN OTRO ARCHIVO COMO ARBOL HEAP

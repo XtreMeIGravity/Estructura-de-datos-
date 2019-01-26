@@ -1,0 +1,8 @@
+Tarea Imprimir sin efecto colateral , recursiva
+void ImpCola(Cola q)
+Cola f=nueva();
+t->ent=q->ent;
+t->sal=q->sal;
+ImpElem(primero(t));
+ImpCola(desformar(t));
+free(t);

@@ -1,0 +1,64 @@
+Espec Conjunto
+    vacioC->Conjunto;
+    InsertaC:Elem, Conjunto -> Conjunto;
+    esVacioC:Conjunto -> Boolean;
+    estaEnC:Elem, Conjunto -> Boolean;
+    eliminaC:Elem, Conjunto -> Conjunto;
+    unionC: Conjunto, Conjunto -> Conjunto;
+    interseccionC: Conjunto, Conjunto -> Conjunto;
+    diferenciaC: Conjunto, Conjunto -> Conjunto;
+    cardinalidadC: Conjunto, Conjunto -> Conjunto;
+Axiomas:  Conjuntos S1, S2 ,Elem e1, e2
+    
+    
+    //SI SE PUEDEN REPETIR VALORES :D I
+    nsertaC(e,s1)=
+        Si estaEnC(e1,s1)
+            return s;
+        sino
+            insertta (e1,s1)
+
+    
+
+    c1:esVacioC(vacioC)=Cierto;
+    c2:esVacioC(InsertaC(e1,s1))=Falso;
+    c3:estaEnC(e1,vacioC())=Falso;
+    c4:estaEnC(e2,InsertaC(e1,s1))=
+        Si e1==e2
+            return Cierto;
+        Sino
+            return(e2,s1);}
+
+
+    c5:eliminaC(e2,vacioC())=vacioC();
+    c6:eliminaC(e2,InsertaC(e1,s1))=
+        Si estaEnC(e1,s1)
+            return InsertaC(e1,eliminaC(e2,s1));
+            Si e1==e2
+                return s1;
+            Sino 
+        sino 
+            return InsertaC(e1,eliminaC(e2,s1));
+    c7:unionC(S1, vacioC())=s1;
+    c8:unionC(s2,InsertaC(e1,s1))=
+        Si estaEnC(e1,s2)
+            return unionC(s1,s2);
+        Sino
+            return InsertaC(e1,unionC(s1,s2));
+    c9:interseccionC(s1, vacioC())=return vacioC();
+    c10:interseccionC(s2,InsertaC(e1,s1))=
+        Si estaEnC(e1,s2)
+            return InsertaC(e1,interseccionC(eliminaC(e1,s2),s1));
+        else
+            return interseccionC(s1,s2);
+    c11:diferenciaC(s1,vacioC())=s1;
+    c12:diferenciaC(InsertaC(e1,s1),s2)=
+        Si estaEnC(e1,s2)
+            return diferenciaC(s1,eliminaC(e1,s2));
+        Sino
+            return InsertaC(e1,diferenciaC(s1,s2));
+    c13:cardinalidadC(vacioC())=0
+    c14:cardinalidadC(InsertaC(e1,s1))=1+cardinalidadC(s1);
+
+    
+        

@@ -1,0 +1,35 @@
+TDA Cola Circular
+Signatura
+
+nuevaC:-> Circular;
+formar:Circular,Elem->Circular;
+esNuevaC:Circular->Bool;
+primeroC:Circular->Elem;
+desformarC:Circular->Circular;
+rotarC:Cirucular->Circular;
+
+
+AXIOMAS	Circular c , Elem e;
+	//Observadora
+	esNuevaC(nuevaC())=True
+	esNuevaC(formarC(c,e))=False
+	//Constructoras
+	primeroC(nuevaC())=ERROR;
+	primeroC(formarC(c,e))=Si esNuevaC(c)
+							return e;
+	//Desdobladoras
+	desformarC(nuevaC())=ERROR
+	desformarC(formarC(c,e))=Si esNuevaC(c)
+								ret c;
+							Sino 
+								ret formarC(desformarC(c),e);
+	rotarC(nuevaC())=Error
+	rotarC(formarC(c,e))=
+				Si esNuevaC(c)
+					ret formarC(c,e);
+				SiNo
+					return formarC(formarC(desformarC(c),e),primero(c));
+FinCircular
+
+
+
